@@ -1,33 +1,26 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\GoogleSheet;
 
 class GoogleClient
 {
 
     /**
-     * Returns an authorized API client.
-     * @return \Google_Client the authorized client object
+     * @return \Google_Service_Sheets
      * @throws \Google_Exception
-     * @throws \Exception
      */
-    public function getClient()
+    public function getService()
     {
         $client = new \Google_Client();
         $client->setScopes(\Google_Service_Sheets::SPREADSHEETS);
-        $client->setAuthConfig('pmweb-5aa3d9098ad8.json');
+        $client->setAuthConfig('config/google/pmweb-5aa3d9098ad8.json');
+        $service =  new \Google_Service_Sheets($client);
 
-        return $client;
+
+        return $service;
     }
 
-    public function getData()
-    {
 
-    }
 
-    public function appendData()
-    {
-
-    }
 
 }
